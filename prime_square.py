@@ -14,14 +14,21 @@ Each of the next t lines contains a single integer n (2≤n≤100) — the requi
 
 Output
 For each test case print n lines, each containing n integers — the prime square you built. If there are multiple answers, print any. """
-import numpy
 
 cases = int(input())
 
-def find_square(size):
-    x = numpy.zeros((size,size))
-    
+#we can just fill the square with 1 or zero, depends on the size (odd or even)
+#if even, we just need to change the principal diagonal to 0
 
-for i in range(0,cases):
+for c in range(0,cases):
     size = int(input())
-    find_square(size)
+    matrix = [[1 for i in range(size)] for j in range(size)]
+
+    if size%2==0 and size!=2:
+        for i in range(0,size):
+            matrix[i][i] = 0
+    
+    for i in range(0,size):
+        for j in range(0,size):
+            print(str(matrix[i][j]), end=" ")
+        print('\n')
