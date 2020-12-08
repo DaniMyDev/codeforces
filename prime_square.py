@@ -17,18 +17,21 @@ For each test case print n lines, each containing n integers — the prime squar
 
 cases = int(input())
 
-#we can just fill the square with 1 or zero, depends on the size (odd or even)
-#if even, we just need to change the principal diagonal to 0
-
 for c in range(0,cases):
-    size = int(input())
-    matrix = [[1 for i in range(size)] for j in range(size)]
 
-    if size%2==0 and size!=2:
-        for i in range(0,size):
-            matrix[i][i] = 0
+    size = int(input())
+
+    matrix = [[0 for i in range(size)] for j in range(size)]
+
+    if size%2!=0:
+        matrix[(size//2)][(size//2)+1] = 1
+        matrix[(size//2)+1][(size//2)] = 1
     
     for i in range(0,size):
+
+        matrix[i][i] = 1
+        matrix[i][size-1-i] = 1
+
         for j in range(0,size):
-            print(str(matrix[i][j]), end=" ")
+            print(matrix[i][j],end=' ')
         print('\n')
